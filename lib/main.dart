@@ -63,7 +63,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: mapInitSuccess
           ? (kIsWeb
-              ? WebNaverMap(clientId: clientId)
+              ? Scaffold(
+                  appBar: AppBar(title: const Text('배달 지도')),
+                  body: WebNaverMap(clientId: clientId),
+                )
               : DeliveryMapScreen(clientId: clientId))
           : const _ErrorScreen(),
     );
