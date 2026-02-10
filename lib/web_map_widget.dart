@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map_web/flutter_naver_map_web.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:js_interop';
 import 'models/report.dart';
 import 'services/firestore_service.dart';
+import 'theme.dart';
 import 'widgets/report_dialog.dart';
 
 @JS('naver.maps.Event.addListener')
@@ -73,7 +75,18 @@ class _WebNaverMapState extends State<WebNaverMap> {
       _loadReports(); // 마커 새로고침
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('✅ 제보가 등록되었습니다!')),
+          SnackBar(
+            content: Row(
+              children: [
+                const Icon(Icons.check_circle, color: Colors.white, size: 20),
+                const SizedBox(width: 8),
+                Text('제보가 등록되었습니다!',
+                  style: GoogleFonts.notoSansKr(color: Colors.white)),
+              ],
+            ),
+            backgroundColor: AppTheme.safeColor,
+            duration: const Duration(seconds: 3),
+          ),
         );
       }
     }
