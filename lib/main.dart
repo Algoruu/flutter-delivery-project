@@ -66,13 +66,49 @@ class MyApp extends StatelessWidget {
                         zoom: 15,
                       ),
                     ),
-                    onMapReady: (controller) {
-                      final marker = NMarker(
-                        id: "delivery_location",
-                        position: seoulCityHall,
-                        caption: NOverlayCaption(text: "배달 지점"),
+                    onMapReady: (controller) async {
+                      // 입주민 전용 마커 (빨간색)
+                      final residentIcon = await NOverlayImage.fromWidget(
+                        widget: _MarkerWidget(color: Colors.red),
+                        size: const Size(48, 48),
+                        context: context,
                       );
-                      controller.addOverlay(marker);
+                      
+                      final residentMarker = NMarker(
+                        id: "resident_only",
+                        position: const NLatLng(37.5669, 126.9778),
+                        icon: residentIcon,
+                        caption: NOverlayCaption(
+                          text: "입주민 전용(진입금지)",
+                          color: Colors.black,
+                          haloColor: Colors.white,
+                          textSize: 12,
+                        ),
+                      );
+
+                      // 배달원 전용 마커 (초록색)
+                      final deliveryIcon = await NOverlayImage.fromWidget(
+                        widget: _MarkerWidget(color: Colors.green),
+                        size: const Size(48, 48),
+                        context: context,
+                      );
+                      
+                      final deliveryMarker = NMarker(
+                        id: "delivery_only",
+                        position: const NLatLng(37.5659, 126.9786),
+                        icon: deliveryIcon,
+                        caption: NOverlayCaption(
+                          text: "배달원 전용(진입가능)",
+                          color: Colors.black,
+                          haloColor: Colors.white,
+                          textSize: 12,
+                        ),
+                      );
+
+                      controller.addOverlayAll({
+                        residentMarker,
+                        deliveryMarker,
+                      });
                       print("Naver map is ready!");
                     },
                   ))
@@ -106,6 +142,40 @@ class MyApp extends StatelessWidget {
                 ),
               ),
       ),
+    );
+  }
+}
+
+// 네이버 마커와 비슷한 커스텀 마커 위젯
+class _MarkerWidget extends StatelessWidget {
+  final Color color;
+
+  const _MarkerWidget({required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        // 마커 핀 모양
+        Icon(
+          Icons.location_on,
+          color: color,
+          size: 48,
+        ),
+        // 중앙의 흰색 원
+        Positioned(
+          top: 8,
+          child: Container(
+            width: 16,
+            height: 16,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
