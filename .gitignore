@@ -54,3 +54,6 @@ app.*.map.json
 
 # Dependency lock files (use only pubspec.yaml for reproducible builds)
 pubspec.lock
+
+# Environment configuration file
+.env
