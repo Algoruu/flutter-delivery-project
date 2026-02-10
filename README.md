@@ -1,16 +1,93 @@
-# delivery_map
+# 🛵 방문자 전용 지도 (Delivery Map)
 
-A new Flutter project.
+> **"여기는 오토바이 진입 금지입니다."** ⛔  
+> 더 이상 아파트 단지 입구에서 당황하지 마세요. 방문자분들을 위한 실시간 진입로 정보 공유 플랫폼입니다.
 
-## Getting Started
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![Naver Map](https://img.shields.io/badge/Naver_Map_API-03C75A?style=for-the-badge&logo=naver&logoColor=white)
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 📱 프로젝트 소개 (Introduction)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+배달 업무를 하다 보면 복잡한 아파트 단지나 오피스텔에서 "**방문자 전용 출입구**"를 찾지 못해 시간을 허비하는 경우가 많습니다.
+이 앱은 **집단지성**(**Crowdsourcing**)을 활용하여 방문자가 직접 진입 가능한 경로와 불가능한 경로를 지도에 표시하고 공유하는 서비스입니다.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 🌟 핵심 가치
+* **시간 절약:** 헤매는 시간 최소화
+* **정보 공유:** 내가 아는 길을 동료들에게 공유
+* **안전 운행:** 무리한 진입 시도 방지
+
+---
+
+## 🚀 핵심 기능 (Key Features)
+
+### 1. 📍 내 위치 기반 지도 (Live Map)
+* **네이버 지도 API**를 활용하여 현재 위치 주변의 지도를 빠르고 정확하게 띄웁니다.
+* GPS를 연동하여 이동 중에도 실시간으로 내 위치를 트래킹합니다.
+
+### 2. 🎨 직관적인 마커 시스템 (Color-coded Markers)
+지도 위에 핀을 꽂아 진입 가능 여부를 한눈에 파악할 수 있습니다.
+* 🔴 **Red Marker:** 입주민 전용 / 오토바이 진입 금지 (도보 배달만 가능)
+* 🟢 **Green Marker:** 방문자 전용 / 오토바이 진입 가능 / 지하주차장 연결
+
+### 3. 📢 실시간 제보 기능 (Report & Share)
+* **Firebase Firestore**를 연동하여 데이터가 실시간으로 저장되고 모든 사용자에게 공유됩니다.
+* 지도를 **터치**(**Long Press**)하여 누구나 쉽게 새로운 정보를 등록할 수 있습니다.
+    * *"여기는 정문인데 오토바이 막아요!"*
+    * *"후문 쪽 쪽문으로 들어가면 빠릅니다."*
+
+---
+
+## 📸 스크린샷 (Screenshots)
+
+| 지도 메인 화면 | 마커 상세 정보(방문자 정보) | 마커 상세 정보(입주민 정보) |제보하기 화면 | 제보등록 화면 |
+|:---:|:---:|:---:|:---:|:---:|
+| ![메인화면](https://github.com/user-attachments/assets/db1a0ee6-a19a-4420-89d0-74c09c123b51) | ![마커 상세 정보 (방문자 정보)](https://github.com/user-attachments/assets/09d15478-e465-4f29-bad6-6a44a937a912) | ![마커 상세 정보(입주민 정보)](https://github.com/user-attachments/assets/e5a5043d-185f-42a2-9d67-9622e6879d52) |![제보하기](https://github.com/user-attachments/assets/e5a5043d-185f-42a2-9d67-9622e6879d52) |![제보등록](https://github.com/user-attachments/assets/b02d5e78-ea9c-4515-8864-8525ebe813df) |
+
+
+---
+
+## 🛠 기술 스택 (Tech Stack)
+
+* **Framework:** Flutter (3.38.9)
+* **Language:** Dart
+* **Backend & DB:** Firebase (Firestore Database)
+* **Map API:** Naver Maps SDK for Flutter (`flutter_naver_map`, `flutter_naver_map_web`)
+
+---
+
+## 🏁 시작하기 (Getting Started)
+
+이 프로젝트를 로컬에서 실행하려면 다음 단계가 필요합니다.
+
+### 1. 프로젝트 클론
+```bash
+git clone [https://github.com/Algoruu/delivery-map.git](https://github.com/Algoruu/delivery-map.git)
+cd delivery-map
+```
+### 2. 패키지 설치
+프로젝트 실행에 필요한 라이브러리들을 설치합니다.
+```bash
+flutter pub get
+```
+### 3. 네이버 클라우드 플랫폼에서 발급받은 Client ID를 사용하세요.
+main.dart 부분에 직접 자신의 id를 사용하세요!
+
+
+## 📅 추후 업데이트 계획 (Roadmap)
+현재 핵심 기능 3가지가 구현되어 있으며, 추후 다음 기능들이 업데이트될 예정입니다.
+
+* [x] 🗺️ 지도 표시 및 내 위치 트래킹 (Naver Map API)
+
+* [x] 📍 진입 가능/불가능 마커 표시 (Custom Markers)
+
+* [x] 📢 Firebase 연동 실시간 제보 시스템 (Firestore)
+
+* [ ] 🔐 회원가입 및 로그인 (Firebase Auth) - Next Update!
+
+* [ ] 🛵 마커 필터링 (오토바이/도보/자전거)
+
+* [ ] 🏆 베스트 제보자 랭킹 시스템
