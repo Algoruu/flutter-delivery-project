@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,12 +14,15 @@ import 'web_map_widget.dart' if (dart.library.io) 'web_map_widget_stub.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // .env 로드
+  await dotenv.load(fileName: '.env');
+
   // Firebase 초기화
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  const clientId = 'ssogztqxcd';
+  final clientId = dotenv.env['CLIENT_ID'] ?? '';
   bool mapInitSuccess = false;
 
   if (!kIsWeb) {
