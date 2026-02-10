@@ -207,7 +207,7 @@ class _DeliveryMapScreenState extends State<DeliveryMapScreen> {
       marker.setOnTapListener((overlay) {
         final statusColor = isResident ? AppTheme.dangerColor : AppTheme.safeColor;
         final statusIcon = isResident ? Icons.block : Icons.check_circle;
-        final statusLabel = isResident ? '입주민 전용 (진입금지)' : '배달원 전용 (진입가능)';
+        final statusLabel = isResident ? '입주민 전용 (진입금지)' : '방문자 전용 (진입가능)';
         final desc = report.description.isNotEmpty
             ? report.description
             : (isResident ? '배달 오토바이 진입이 불가능합니다.' : '배달 오토바이 진입이 가능합니다.');
