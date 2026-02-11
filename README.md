@@ -1,4 +1,4 @@
-# 🛵 방문자 전용 지도 (Delivery Map)
+﻿# 🛵 방문자 전용 지도 (Delivery Map)
 
 > **"여기는 오토바이 진입 금지입니다."** ⛔  
 > 더 이상 아파트 단지 입구에서 당황하지 마세요. 방문자분들을 위한 실시간 진입로 정보 공유 플랫폼입니다.
@@ -33,7 +33,13 @@
 * 🔴 **Red Marker:** 입주민 전용 / 오토바이 진입 금지 (도보 배달만 가능)
 * 🟢 **Green Marker:** 방문자 전용 / 오토바이 진입 가능 / 지하주차장 연결
 
-### 3. 📢 실시간 제보 기능 (Report & Share)
+### 3. 🔍 장소 검색 & 핀 조정 기능 (Search & Pin Adjustment)
+* **네이버 검색 API**(지역 검색)와 **Geocoding API**를 조합하여 장소명·도로명 주소 모두 검색 가능합니다.
+* 검색 결과를 선택하면 해당 위치로 카메라가 이동하고, **핀 조정 모드**에 진입합니다.
+* 지도를 드래그하여 **정확한 위치를 미세 조정**한 뒤 제보할 수 있습니다.
+* 웹 버전에서도 동일한 검색·핀 조정 기능을 지원합니다.
+
+### 4. 📢 실시간 제보 기능 (Report & Share)
 * **Firebase Firestore**를 연동하여 데이터가 실시간으로 저장되고 모든 사용자에게 공유됩니다.
 * 지도를 **터치**(**Long Press**)하여 누구나 쉽게 새로운 정보를 등록할 수 있습니다.
     * *"여기는 정문인데 오토바이 막아요!"*
@@ -56,6 +62,7 @@
 * **Language:** Dart
 * **Backend & DB:** Firebase (Firestore Database)
 * **Map API:** Naver Maps SDK for Flutter (`flutter_naver_map`, `flutter_naver_map_web`)
+* **Search API:** Naver Search Local API (`openapi.naver.com`), Naver Cloud Geocoding API
 
 ---
 
@@ -97,6 +104,12 @@ NAVER_SEARCH_CLIENT_SECRET=여기에_당신의_검색_클라이언트_SECRET_입
 * [x] 📍 진입 가능/불가능 마커 표시 (Custom Markers)
 
 * [x] 📢 Firebase 연동 실시간 제보 시스템 (Firestore)
+
+* [x] 🔍 장소명/주소 검색 기능 (Naver Search & Geocoding API)
+
+* [x] 📌 핀 위치 미세 조정 모드 (Pin Adjustment Mode)
+
+* [x] 🌐 웹 버전 지원 (Flutter Web + CORS Proxy)
 
 * [ ] 🔐 회원가입 및 로그인 (Firebase Auth) - Next Update!
 
