@@ -12,7 +12,7 @@ import 'package:delivery_map/main.dart';
 void main() {
   testWidgets('Delivery map app test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp(clientId: 'test_client_id'));
+    await tester.pumpWidget(const MyApp(clientId: 'test_client_id', mapInitSuccess: true));
 
     // Verify that the app bar title is displayed.
     expect(find.text('배달 지도'), findsOneWidget);
