@@ -10,12 +10,23 @@ class PlaceSearchService {
   final String ncloudClientId;
   final String ncloudClientSecret;
 
+  /// 웹 CORS 프록시 (dart run tools/cors_proxy.dart 실행 필요)
+  static const _corsProxy = 'http://localhost:3456/proxy?url=';
+
   PlaceSearchService({
     required this.naverSearchClientId,
     required this.naverSearchClientSecret,
     required this.ncloudClientId,
     required this.ncloudClientSecret,
   });
+
+  /// 웹에서는 CORS 프록시를 경유하여 API 호출
+  Uri _buildUri(String url) {
+    if (kIsWeb) {
+      return Uri.parse('$_corsProxy${Uri.encodeComponent(url)}');
+    }
+    return Uri.parse(url);
+  }
 
   /// 키워드로 장소 검색 → 결과에 좌표 포함
   /// 네이버 지역 검색 API + Geocoding API 조합
@@ -35,7 +46,7 @@ class PlaceSearchService {
 
   /// 네이버 지역 검색 API (developers.naver.com)
   Future<List<PlaceSearchResult>> _searchLocal(String query) async {
-    final uri = Uri.parse(
+    final uri = _buildUri(
       'https://openapi.naver.com/v1/search/local.json'
       '?query=${Uri.encodeComponent(query)}&display=5',
     );
@@ -90,7 +101,7 @@ class PlaceSearchService {
   Future<(double, double)?> _geocodeAddress(String address) async {
     if (address.isEmpty) return null;
 
-    final uri = Uri.parse(
+    final uri = _buildUri(
       'https://maps.apigw.ntruss.com/map-geocode/v2/geocode'
       '?query=${Uri.encodeComponent(address)}',
     );
@@ -118,7 +129,7 @@ class PlaceSearchService {
 
   /// Geocoding API로 주소 검색 (직접 주소 입력 시)
   Future<List<PlaceSearchResult>> _searchGeocode(String query) async {
-    final uri = Uri.parse(
+    final uri = _buildUri(
       'https://maps.apigw.ntruss.com/map-geocode/v2/geocode'
       '?query=${Uri.encodeComponent(query)}',
     );
