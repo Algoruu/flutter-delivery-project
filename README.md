@@ -49,9 +49,9 @@
 
 ## 📸 스크린샷 (Screenshots)
 
-| 지도 메인 화면 | 마커 상세 정보(방문자 정보) | 마커 상세 정보(입주민 정보) |제보하기 화면 | 제보등록 화면 |
+| 지도 메인 화면 | 검색 화면 | 핀 조정 화면 |제보하기 화면 | 제보등록 화면 |
 |:---:|:---:|:---:|:---:|:---:|
-| ![메인화면](https://github.com/user-attachments/assets/db1a0ee6-a19a-4420-89d0-74c09c123b51) | ![마커 상세 정보 (방문자 정보)](https://github.com/user-attachments/assets/09d15478-e465-4f29-bad6-6a44a937a912) | ![마커 상세 정보(입주민 정보)](https://github.com/user-attachments/assets/e5a5043d-185f-42a2-9d67-9622e6879d52) |![제보하기](https://github.com/user-attachments/assets/dc0041a2-0b31-47d2-bce2-532f72698972) |![제보등록](https://github.com/user-attachments/assets/b02d5e78-ea9c-4515-8864-8525ebe813df) |
+| ![메인화면](https://github.com/user-attachments/assets/28765ade-926c-4b26-af75-cf22b445cc4b) | ![검색 화면](https://github.com/user-attachments/assets/27f0510c-7b6d-4074-97a9-aa694f9c41f1) | ![핀 조정 화면](https://github.com/user-attachments/assets/3412e0ec-72ed-4d9a-a066-3d2b7c63bd97) |![제보하기](https://github.com/user-attachments/assets/dc0041a2-0b31-47d2-bce2-532f72698972) |![제보등록](https://github.com/user-attachments/assets/b02d5e78-ea9c-4515-8864-8525ebe813df) |
 
 
 ---
